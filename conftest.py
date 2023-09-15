@@ -1,11 +1,13 @@
 from selene import browser
 import pytest
 
-
 @pytest.fixture
-def open_browser():
-    browser.open("https://github.com/IkonnikovQA/python_6_2")
+def open():
+    browser.open('https://google.com')
+@pytest.fixture
+def wh():
+    browser.config.window_width = 800
+    browser.config.window_height = 600
 
-@pytest.fixture(open_browser)
-def click_back():
-    browser.element("#actions-tab")
+    yield
+    print('finish')
